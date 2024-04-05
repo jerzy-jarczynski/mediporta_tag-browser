@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Tags Browser
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  
+The Tags Browser is an application that connects to the Stack Overflow API to retrieve tags. The fetched tags are listed in a table with pagination and sorting capabilities. Users have the option to determine how many tags are displayed per page. Tag information is stored in the Redux store. Connection to the API is facilitated using Axios. The graphical user interface is built using the MUI library. Stories have been developed for key components within the project. The application appropriately responds to download errors and data loading times.
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+For this project, I haven't set up deployment. To view the project, you need to clone the repository and install it locally on your machine.
 
-### `npm start`
+##  Technological Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1.  **Axios**: A promise-based HTTP client for making requests to the Stack Overflow API.
+2.  **Redux**: A predictable state container for JavaScript apps, used here to manage tag information.
+3.  **MUI (Material-UI)**: A popular React UI framework that provides pre-designed React components following Google's Material Design principles, utilized to build the graphical user interface.
+4.  **React**: A JavaScript library for building user interfaces.
+5.  **Storybook**: A development environment for UI components, enabling the development and testing of components in isolation.
+6.  **JavaScript/ES6+**: The primary programming language for the application, utilizing modern JavaScript features.
+7.  **HTML/CSS**: For structuring and styling the user interface elements.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Instalation
 
-### `npm test`
+To download the repository, execute the following command:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+git clone https://github.com/jerzy-jarczynski/mediporta_tag-browser.git
+```
 
-### `npm run build`
+Next, navigate into the downloaded project directory and install dependencies by running:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Please ensure that Node.js and npm (or yarn) are installed on your system before proceeding. To run the project on `localhost:3000`, execute the start script with the following command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm start
+```
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This will start the development server, and you can view the project in your web browser at [http://localhost:3000](http://localhost:3000).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Please make sure to update tests as appropriate.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[](https://github.com/jerzy-jarczynski/final_jewelry_shop#license)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[MIT](https://choosealicense.com/licenses/mit/)
 
-### Code Splitting
+## Issues
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+Working on this project, I had to start by figuring out what MUI and Storybook were. Luckily, educating myself didn't take much time. It took me just as long to recall the Redux rules and solve problems related to correctly placing the tags fetched from the API in the store.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+I didn't think it could happen, but continuous refreshing and sending new requests while working on the project caused Stack Overflow to block my IP, and for a while, I developed the project based on data firmly placed in the InitialState. However, I tested the whole thing on a different network and found that the tags were being fetched correctly.
 
-### Making a Progressive Web App
+This project involved 2 sleepless nights and 2 restarts from scratch. It didn't happen without the help of Chat GPT, with whom I'm increasingly collaborating more effectively (3.5). I hope that despite the delay, recruiters will look at my task implementation with a kind eye.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# VERY IMPORTANT
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+DO NOT REQUEST FOR MORE THAT 100 TAGS!!!
