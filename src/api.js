@@ -11,6 +11,6 @@ export async function fetchStackOverflowTags(pageNumber, pageSize) {
         }
     } catch (error) {
         console.error('Error fetching tags:', error.message);
-        return [];
+        throw error;
     }
 }
