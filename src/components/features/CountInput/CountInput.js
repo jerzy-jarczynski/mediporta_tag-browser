@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Dialog, DialogTitle } from '@mui/material';
+import { TextField, Button, Dialog, DialogTitle, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setTagsCount,
@@ -59,18 +59,27 @@ const CountInput = () => {
   };
 
   return (
-    <div>
+    <Box
+      display="flex"
+      flexDirection={{ xs: 'column', sm: 'row' }}
+      alignItems="center"
+      justifyContent="center"
+      p={{ xs: '10px 0', sm: '20px 0' }}
+      maxWidth={{ xs: '100%', sm: '50%' }}
+      margin="auto"
+    >
       <TextField
         type="number"
         label="Count"
         variant="outlined"
         value={count}
         onChange={handleCountChange}
+        sx={{ mb: { xs: '10px', sm: 0 }, width: '100%', mr: { sm: '10px' } }}
       />
       <Button
         variant="contained"
         onClick={handleSetCount}
-        sx={{ height: '56px', marginLeft: '10px' }}
+        sx={{ height: '56px', width: '100%' }}
       >
         Set Count
       </Button>
@@ -113,7 +122,7 @@ const CountInput = () => {
           </div>
         </DialogTitle>
       </Dialog>
-    </div>
+    </Box>
   );
 };
 

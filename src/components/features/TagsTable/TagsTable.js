@@ -9,14 +9,21 @@ import {
   Paper,
   Typography,
   TablePagination,
+  IconButton,
+  Box,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { getTags } from '../../../redux/tagsRedux';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { orderBy } from 'lodash';
 
 const TagsTable = () => {
   const tags = useSelector(getTags);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [sortBy, setSortBy] = useState(null);
+  const [sortDirection, setSortDirection] = useState('asc');
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -27,7 +34,19 @@ const TagsTable = () => {
     setPage(0);
   };
 
-  // Obliczanie początkowego indeksu dla aktualnej strony
+  const handleSort = (field) => {
+    if (field === sortBy) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(field);
+      setSortDirection('asc');
+    }
+  };
+
+  // Sort tags
+  const sortedTags = orderBy(tags, sortBy, sortDirection);
+
+  // Calculate starting index for current page
   const startIndex = page * rowsPerPage + 1;
 
   return (
@@ -45,28 +64,84 @@ const TagsTable = () => {
                 </Typography>
               </TableCell>
               <TableCell>
-                <Typography
-                  variant="h6"
-                  style={{ color: 'white', fontWeight: 'bold' }}
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
                 >
-                  Name
-                </Typography>
+                  <Typography
+                    variant="h6"
+                    style={{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      marginLeft: '8px',
+                      marginRight: '8px',
+                    }}
+                  >
+                    Name
+                  </Typography>
+                  <IconButton
+                    onClick={() => handleSort('name')}
+                    style={{ color: 'white', width: '24px' }}
+                  >
+                    {sortBy === 'name' ? (
+                      sortDirection === 'asc' ? (
+                        <ArrowUpwardIcon />
+                      ) : (
+                        <ArrowDownwardIcon />
+                      )
+                    ) : (
+                      <React.Fragment>
+                        <ArrowUpwardIcon />
+                        <ArrowDownwardIcon />
+                      </React.Fragment>
+                    )}
+                  </IconButton>
+                </Box>
               </TableCell>
               <TableCell>
-                <Typography
-                  variant="h6"
-                  style={{ color: 'white', fontWeight: 'bold' }}
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
                 >
-                  Count
-                </Typography>
+                  <Typography
+                    variant="h6"
+                    style={{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      marginLeft: '8px',
+                      marginRight: '8px',
+                    }}
+                  >
+                    Count
+                  </Typography>
+                  <IconButton
+                    onClick={() => handleSort('count')}
+                    style={{ color: 'white', width: '24px' }}
+                  >
+                    {sortBy === 'count' ? (
+                      sortDirection === 'asc' ? (
+                        <ArrowUpwardIcon />
+                      ) : (
+                        <ArrowDownwardIcon />
+                      )
+                    ) : (
+                      <React.Fragment>
+                        <ArrowUpwardIcon />
+                        <ArrowDownwardIcon />
+                      </React.Fragment>
+                    )}
+                  </IconButton>
+                </Box>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {tags
+            {sortedTags
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((tag, index) => (
-                <TableRow key={index}>
+                <TableRow key={index} style={{ backgroundColor: index % 2 === 0 ? '#f2f2f2' : 'inherit' }}>
                   <TableCell>{startIndex + index}</TableCell>
                   <TableCell>{tag.name}</TableCell>
                   <TableCell>{tag.count}</TableCell>
@@ -78,7 +153,7 @@ const TagsTable = () => {
       <TablePagination
         rowsPerPageOptions={[10]}
         component="div"
-        count={tags.length}
+        count={sortedTags.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
