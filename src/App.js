@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { data: tags, loading, error } = useSelector((state) => state.tags); // Zmiana selektora
+  const { data: tags, loading, error } = useSelector((state) => state.tags);
 
   useEffect(() => {
     dispatch(fetchTags());
