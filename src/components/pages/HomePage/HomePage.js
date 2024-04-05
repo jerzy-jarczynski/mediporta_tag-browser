@@ -1,9 +1,11 @@
 import { Typography } from '@mui/material';
+import TagsTable from '../../features/TagsTable/TagsTable';
 
 const HomePage = () => {
   return (
     <div>
-      <Typography>HomePage</Typography>
+      <Typography variant="h3">Mediporta Tag Browser</Typography>
+      <TagsTable />
     </div>
   );
 };

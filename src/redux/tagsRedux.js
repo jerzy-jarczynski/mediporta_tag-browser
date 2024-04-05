@@ -1,6 +1,9 @@
 import initialState from './initialState';
 import { fetchStackOverflowTags } from '../api';
 
+// selectors
+export const getTags = (state) => state.tags.data || [];
+
 // actions
 const createActionName = (actionName) => `app/tags/${actionName}`;
 const FETCH_TAGS_REQUEST = createActionName('FETCH_TAGS_REQUEST');
