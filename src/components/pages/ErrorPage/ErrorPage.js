@@ -1,12 +1,18 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 const ErrorPage = ({ errorMessage }) => {
   return (
-    <div>
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      p={2}
+    >
       <Typography variant="h3">Error</Typography>
       <Typography variant="body1">{errorMessage}</Typography>
-    </div>
+    </Box>
   );
 };
 

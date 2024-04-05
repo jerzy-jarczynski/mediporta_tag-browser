@@ -1,11 +1,16 @@
-import { legacy_createStore as createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import {
+  legacy_createStore as createStore,
+  combineReducers,
+  compose,
+  applyMiddleware,
+} from 'redux';
 import thunk from 'redux-thunk';
 import initialState from './initialState';
 import tagsReducer from './tagsRedux';
 
 const subreducers = {
-  tags: tagsReducer
-}
+  tags: tagsReducer,
+};
 
 const reducer = combineReducers(subreducers);
 
@@ -15,7 +20,9 @@ const store = createStore(
 
   compose(
     applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+    window.__REDUX_DEVTOOLS_EXTENSION__
+      ? window.__REDUX_DEVTOOLS_EXTENSION__()
+      : (f) => f
   )
 );
 

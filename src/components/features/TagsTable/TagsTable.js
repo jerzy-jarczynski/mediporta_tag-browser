@@ -43,10 +43,8 @@ const TagsTable = () => {
     }
   };
 
-  // Sort tags
   const sortedTags = orderBy(tags, sortBy, sortDirection);
 
-  // Calculate starting index for current page
   const startIndex = page * rowsPerPage + 1;
 
   return (
@@ -141,7 +139,12 @@ const TagsTable = () => {
             {sortedTags
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((tag, index) => (
-                <TableRow key={index} style={{ backgroundColor: index % 2 === 0 ? '#f2f2f2' : 'inherit' }}>
+                <TableRow
+                  key={index}
+                  style={{
+                    backgroundColor: index % 2 === 0 ? '#f2f2f2' : 'inherit',
+                  }}
+                >
                   <TableCell>{startIndex + index}</TableCell>
                   <TableCell>{tag.name}</TableCell>
                   <TableCell>{tag.count}</TableCell>

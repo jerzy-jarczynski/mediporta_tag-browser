@@ -2,8 +2,7 @@ import initialState from './initialState';
 import { fetchStackOverflowTags } from '../api';
 
 // selectors
-// export const getTags = (state) => state.tags.data || [];
-export const getTags = (state) => state.tags || [];
+export const getTags = (state) => state.tags.data || [];
 export const getTagsCount = (state) => state.tags.count || 10;
 
 // actions

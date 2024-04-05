@@ -7,21 +7,16 @@ import ErrorPage from './components/pages/ErrorPage/ErrorPage';
 import LoadingPage from './components/pages/LoadingPage/LoadingPage';
 import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
-// import { fetchTags } from './redux/tagsRedux';
-// import { useDispatch, useSelector } from 'react-redux';
+import { fetchTags } from './redux/tagsRedux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
-  // const dispatch = useDispatch();
-  // const { data: tags, loading, error } = useSelector((state) => state.tags);
+  const dispatch = useDispatch();
+  const { data: tags, loading, error } = useSelector((state) => state.tags);
 
-  // useEffect(() => {
-  //   dispatch(fetchTags());
-  // }, [dispatch]);
-
-  // ==================
-  const loading = false;
-  const error = null;
-  // ==================
+  useEffect(() => {
+    dispatch(fetchTags());
+  }, [dispatch]);
 
   return (
     <Container maxWidth="md">
@@ -29,7 +24,7 @@ const App = () => {
       {loading && <LoadingPage />}
       {!loading && (
         <>
-          {error ? (
+          {error || !tags ? (
             <ErrorPage errorMessage={error} />
           ) : (
             <Routes>

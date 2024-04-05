@@ -8,7 +8,6 @@ export default {
   component: CountInput,
 };
 
-// Otwarcie provider w story
 export const Default = () => (
   <Provider store={store}>
     <CountInput />

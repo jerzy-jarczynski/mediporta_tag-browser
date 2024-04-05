@@ -16,8 +16,16 @@ const Header = () => {
           },
         }}
       >
-        <a href="https://www.mediporta.pl/" target="_blank" rel="noopener noreferrer">
-          <img src="Mediporta_LOGO.png" alt="Mediporta Logo" style={{ width: '200px', marginRight: '10px' }} />
+        <a
+          href="https://www.mediporta.pl/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="Mediporta_LOGO.png"
+            alt="Mediporta Logo"
+            style={{ width: '200px', marginRight: '10px' }}
+          />
         </a>
       </Box>
     </div>
